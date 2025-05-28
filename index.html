@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Churmar Website - Your Ultimate FPS & TPS Gaming Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#00FF8C',secondary:'#FF2E63'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', sans-serif;
+background-color: #0D1117;
+color: #fff;
+}
+.orbitron {
+font-family: 'Orbitron', sans-serif;
+}
+.nav-item {
+position: relative;
+overflow: hidden;
+}
+.nav-item::after {
+content: '';
+position: absolute;
+bottom: -2px;
+left: 0;
+width: 0;
+height: 2px;
+background: linear-gradient(90deg, #00FF8C, #FF2E63);
+transition: width 0.3s ease;
+}
+.nav-item:hover::after {
+width: 100%;
+}
+.game-card {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+background: rgba(255, 255, 255, 0.05);
+backdrop-filter: blur(10px);
+border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.game-card:hover {
+transform: translateY(-10px);
+box-shadow: 0 15px 30px rgba(0, 255, 140, 0.2);
+}
+.fps-section {
+background: linear-gradient(135deg, rgba(255, 46, 99, 0.1), rgba(255, 140, 0, 0.1));
+}
+.tps-section {
+background: linear-gradient(135deg, rgba(0, 255, 140, 0.1), rgba(138, 43, 226, 0.1));
+}
+.neon-button {
+position: relative;
+overflow: hidden;
+transition: all 0.3s ease;
+z-index: 1;
+}
+.neon-button::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+transition: all 0.5s ease;
+z-index: -1;
+}
+.neon-button:hover::before {
+left: 100%;
+}
+.tournament-card {
+background: linear-gradient(145deg, rgba(13, 17, 23, 0.8), rgba(30, 40, 50, 0.8));
+border: 1px solid rgba(255, 255, 255, 0.1);
+box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+.tournament-card:hover {
+border-color: rgba(0, 255, 140, 0.5);
+box-shadow: 0 8px 32px rgba(0, 255, 140, 0.3);
+}
+.news-card {
+transition: transform 0.3s ease;
+background: rgba(255, 255, 255, 0.03);
+backdrop-filter: blur(10px);
+border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.news-card:hover {
+transform: translateY(-5px);
+border-color: rgba(0, 255, 140, 0.3);
+}
+.download-button {
+position: relative;
+overflow: hidden;
+z-index: 1;
+}
+.download-button::after {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: linear-gradient(45deg, rgba(0, 255, 140, 0.5), rgba(255, 46, 99, 0.5));
+z-index: -1;
+transition: opacity 0.3s ease;
+opacity: 0;
+}
+.download-button:hover::after {
+opacity: 1;
+}
+.social-icon {
+transition: transform 0.3s ease, color 0.3s ease;
+}
+.social-icon:hover {
+transform: translateY(-5px);
+color: #00FF8C;
+}
+.custom-scrollbar::-webkit-scrollbar {
+width: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+background: rgba(255, 255, 255, 0.05);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+background: linear-gradient(180deg, #00FF8C, #FF2E63);
+border-radius: 4px;
+}
+.hero-bg {
+background-image: url('https://readdy.ai/api/search-image?query=futuristic%20gaming%20cyberpunk%20environment%20with%20neon%20lights%2C%20holographic%20displays%20showing%20FPS%20games%20like%20Valorant%20and%20Counter-Strike%2C%20with%20dark%20atmosphere%20and%20vibrant%20neon%20accents%2C%20high-quality%20digital%20art%2C%20ultra-detailed%2C%20cinematic%20lighting%2C%20high%20resolution&width=1920&height=1080&seq=hero1&orientation=landscape');
+background-size: cover;
+background-position: center;
+position: relative;
+}
+.hero-bg::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: linear-gradient(to right, rgba(13, 17, 23, 0.9), rgba(13, 17, 23, 0.7), rgba(13, 17, 23, 0.4));
+z-index: 1;
+}
+.hero-content {
+position: relative;
+z-index: 2;
+}
+input[type="checkbox"] {
+appearance: none;
+-webkit-appearance: none;
+width: 20px;
+height: 20px;
+border: 2px solid rgba(255, 255, 255, 0.3);
+border-radius: 4px;
+cursor: pointer;
+position: relative;
+transition: all 0.3s ease;
+background-color: transparent;
+}
+input[type="checkbox"]:checked {
+background-color: #00FF8C;
+border-color: #00FF8C;
+}
+input[type="checkbox"]:checked::before {
+content: '✓';
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+color: #0D1117;
+font-size: 12px;
+font-weight: bold;
+}
+input[type="range"] {
+-webkit-appearance: none;
+width: 100%;
+height: 6px;
+background: rgba(255, 255, 255, 0.1);
+border-radius: 5px;
+outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 18px;
+height: 18px;
+border-radius: 50%;
+background: #00FF8C;
+cursor: pointer;
+box-shadow: 0 0 10px rgba(0, 255, 140, 0.5);
+}
+.switch {
+position: relative;
+display: inline-block;
+width: 50px;
+height: 24px;
+}
+.switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+.slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: rgba(255, 255, 255, 0.1);
+transition: .4s;
+border-radius: 34px;
+}
+.slider:before {
+position: absolute;
+content: "";
+height: 18px;
+width: 18px;
+left: 3px;
+bottom: 3px;
+background-color: white;
+transition: .4s;
+border-radius: 50%;
+}
+input:checked + .slider {
+background-color: #00FF8C;
+}
+input:checked + .slider:before {
+transform: translateX(26px);
+}
+.tab-button {
+transition: all 0.3s ease;
+background: rgba(255, 255, 255, 0.05);
+}
+.tab-button.active {
+background: linear-gradient(90deg, rgba(0, 255, 140, 0.2), rgba(0, 255, 140, 0.1));
+color: #00FF8C;
+border: 1px solid rgba(0, 255, 140, 0.3);
+}
+</style>
+</head>
+<body class="custom-scrollbar">
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-opacity-80 bg-[#0D1117] border-b border-white/10">
+<div class="container mx-auto px-6 py-3">
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<a href="#" class="flex items-center">
+<span class="text-3xl font-['Pacifico'] text-primary mr-1">Churmar</span>
+<span class="text-3xl orbitron font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Website</span>
+</a>
+</div>
+<div class="hidden md:flex items-center space-x-8">
+<a href="#games" class="nav-item text-white hover:text-primary transition-colors duration-300">Games</a>
+<a href="#news" class="nav-item text-white hover:text-primary transition-colors duration-300">News</a>
+<a href="#community" class="nav-item text-white hover:text-primary transition-colors duration-300">Community</a>
+</div>
+<div class="flex items-center space-x-4">
+<div class="relative">
+<input type="text" placeholder="Search games..." class="bg-[#1A1F29] border border-white/10 rounded-full py-2 pl-10 pr-4 text-sm focus:outline-none focus:border-primary transition-colors duration-300 w-40 md:w-64">
+<div class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center text-white/50">
+<i class="ri-search-line"></i>
+</div>
+</div>
+<button class="neon-button bg-gradient-to-r from-primary to-secondary text-[#0D1117] font-medium py-2 px-4 rounded-button flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-user-line"></i>
+</div>
+<span>Sign In</span>
+</button>
+<div class="md:hidden w-8 h-8 flex items-center justify-center cursor-pointer">
+<i class="ri-menu-line text-2xl"></i>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="hero-bg pt-28 pb-20">
+<div class="container mx-auto px-6 hero-content">
+<div class="flex flex-col md:flex-row items-center">
+<div class="md:w-1/2 mb-10 md:mb-0">
+<h1 class="orbitron text-4xl md:text-6xl font-bold mb-4 leading-tight">
+<span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">DOMINATE</span> THE
+<span class="bg-clip-text text-transparent bg-gradient-to-r from-secondary to-primary">BATTLEFIELD</span>
+</h1>
+<p class="text-lg md:text-xl text-white/80 mb-8 max-w-xl">
+Your ultimate destination for FPS and TPS gaming. Join millions of players worldwide in the most competitive shooter games on the market.
+</p>
+<div class="flex flex-wrap gap-4">
+<button class="neon-button bg-primary hover:bg-opacity-90 text-[#0D1117] font-bold py-3 px-8 rounded-button whitespace-nowrap">
+PLAY NOW
+</button>
+<button class="neon-button bg-transparent border-2 border-primary text-primary hover:bg-primary/10 font-bold py-3 px-8 rounded-button whitespace-nowrap">
+WATCH TRAILER
+</button>
+</div>
+<div class="mt-8 flex items-center">
+<div class="flex -space-x-3">
+<img src="https://readdy.ai/api/search-image?query=professional%20gamer%20profile%20photo%2C%20male%2C%20serious%20expression%2C%20gaming%20headset%2C%20high%20quality%20portrait%2C%20studio%20lighting&width=100&height=100&seq=player1&orientation=squarish" class="w-10 h-10 rounded-full border-2 border-primary object-top object-cover" alt="Player">
+<img src="https://readdy.ai/api/search-image?query=professional%20female%20gamer%20profile%20photo%2C%20confident%20expression%2C%20gaming%20headset%2C%20high%20quality%20portrait%2C%20studio%20lighting&width=100&height=100&seq=player2&orientation=squarish" class="w-10 h-10 rounded-full border-2 border-secondary object-top object-cover" alt="Player">
+<img src="https://readdy.ai/api/search-image?query=professional%20asian%20gamer%20profile%20photo%2C%20focused%20expression%2C%20gaming%20headset%2C%20high%20quality%20portrait%2C%20studio%20lighting&width=100&height=100&seq=player3&orientation=squarish" class="w-10 h-10 rounded-full border-2 border-primary object-top object-cover" alt="Player">
+<img src="https://readdy.ai/api/search-image?query=professional%20middle%20eastern%20gamer%20profile%20photo%2C%20determined%20expression%2C%20gaming%20headset%2C%20high%20quality%20portrait%2C%20studio%20lighting&width=100&height=100&seq=player4&orientation=squarish" class="w-10 h-10 rounded-full border-2 border-secondary object-top object-cover" alt="Player">
+</div>
+<div class="ml-4">
+<span class="text-2xl font-bold text-primary">3.8M+</span>
+<p class="text-white/70 text-sm">Active players</p>
+</div>
+</div>
+</div>
+<div class="md:w-1/2 flex justify-center">
+<div class="relative">
+<div class="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-lg blur opacity-30"></div>
+<div class="relative bg-[#1A1F29] rounded-lg overflow-hidden border border-white/10">
+<img src="https://readdy.ai/api/search-image?query=first-person%20shooter%20game%20screenshot%2C%20futuristic%20weapons%2C%20cyberpunk%20style%2C%20neon%20lighting%2C%20high-quality%20game%20graphics%2C%20ultra-detailed%2C%20cinematic%2C%20high%20resolution&width=600&height=400&seq=game1&orientation=landscape" class="w-full h-auto object-top object-cover rounded-lg" alt="Game Screenshot">
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0D1117] to-transparent p-4">
+<div class="flex justify-between items-center">
+<div>
+<span class="text-xs text-primary">FEATURED GAME</span>
+<h3 class="orbitron text-xl font-bold">Cyber Assault 2025</h3>
+</div>
+<div class="flex items-center space-x-2">
+<span class="text-white/70 text-sm">LIVE</span>
+<span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Game Categories Section -->
+<section id="games" class="py-20">
+<div class="container mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="orbitron text-4xl font-bold mb-4">TOP <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">GAMES</span></h2>
+<p class="text-white/70 max-w-2xl mx-auto">Explore our curated selection of the most popular and competitive shooter games, from tactical FPS to action-packed battle royales.</p>
+</div>
+<div class="mb-8">
+<div class="inline-flex p-1 bg-[#1A1F29] rounded-full">
+<button class="tab-button active px-6 py-2 rounded-full text-sm font-medium whitespace-nowrap">All Games</button>
+<button class="tab-button px-6 py-2 rounded-full text-sm font-medium whitespace-nowrap">FPS</button>
+<button class="tab-button px-6 py-2 rounded-full text-sm font-medium whitespace-nowrap">TPS</button>
+<button class="tab-button px-6 py-2 rounded-full text-sm font-medium whitespace-nowrap">Battle Royale</button>
+</div>
+</div>
+<!-- FPS Section -->
+<div class="fps-section rounded-2xl p-6 mb-16">
+<h3 class="orbitron text-2xl font-bold mb-6 flex items-center">
+<div class="w-8 h-8 flex items-center justify-center bg-gradient-to-r from-secondary to-orange-500 rounded-full mr-3">
+<i class="ri-crosshair-line"></i>
+</div>
+First-Person Shooters
+</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="game-card rounded-xl overflow-hidden">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=valorant%20game%20screenshot%2C%20tactical%20first-person%20shooter%2C%20vibrant%20colors%2C%20character%20abilities%2C%20high-quality%20game%20graphics%2C%20ultra-detailed%2C%20cinematic%2C%20high%20resolution&width=400&height=225&seq=valorant&orientation=landscape" class="w-full h-48 object-top object-cover" alt="Valorant">
+<div class="absolute top-3 right-3 bg-secondary text-white text-xs font-bold px-2 py-1 rounded">HOT</div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<h4 class="orbitron text-xl font-bold">VALORANT</h4>
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center text-yellow-400 mr-1">
+<i class="ri-star-fill"></i>
+</div>
+<span class="text-white/90 text-sm">4.8</span>
+</div>
+</div>
+<p class="text-white/70 text-sm mb-4">A tactical 5v5 character-based shooter where precise gunplay meets unique agent abilities.</p>
+<div class="flex justify-between items-center">
+<span class="text-primary font-medium">Free to Play</span>
+<a href="https://store.epicgames.com/en-US/p/fortnite" target="_blank" class="neon-button bg-[#1A1F29] hover:bg-[#252A35] text-white px-4 py-2 rounded-button text-sm whitespace-nowrap">
+PLAY NOW
+</a>
+</div>
+</div>
+</div>
+<div class="game-card rounded-xl overflow-hidden">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=counter-strike%202%20game%20screenshot%2C%20tactical%20first-person%20shooter%2C%20realistic%20graphics%2C%20dust2%20map%2C%20high-quality%20game%20graphics%2C%20ultra-detailed%2C%20cinematic%2C%20high%20resolution&width=400&height=225&seq=cs2&orientation=landscape" class="w-full h-48 object-top object-cover" alt="Counter-Strike 2">
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<h4 class="orbitron text-xl font-bold">COUNTER-STRIKE 2</h4>
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center text-yellow-400 mr-1">
+<i class="ri-star-fill"></i>
+</div>
+<span class="text-white/90 text-sm">4.7</span>
+</div>
+</div>
+<p class="text-white/70 text-sm mb-4">The iconic tactical shooter returns with improved graphics, physics, and gameplay mechanics.</p>
+<div class="flex justify-between items-center">
+<span class="text-primary font-medium">Free to Play</span>
+<a href="https://store.steampowered.com/app/730/CounterStrike_2/" target="_blank" class="neon-button bg-[#1A1F29] hover:bg-[#252A35] text-white px-4 py-2 rounded-button text-sm whitespace-nowrap">
+PLAY NOW
+</a>
+</div>
+</div>
+</div>
+<div class="game-card rounded-xl overflow-hidden">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=overwatch%202%20game%20screenshot%2C%20hero%20shooter%2C%20vibrant%20colors%2C%20futuristic%20combat%2C%20high-quality%20game%20graphics%2C%20ultra-detailed%2C%20cinematic%2C%20high%20resolution&width=400&height=225&seq=ow2&orientation=landscape" class="w-full h-48 object-top object-cover" alt="Overwatch 2">
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<h4 class="orbitron text-xl font-bold">OVERWATCH 2</h4>
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center text-yellow-400 mr-1">
+<i class="ri-star-fill"></i>
+</div>
+<span class="text-white/90 text-sm">4.6</span>
+</div>
+</div>
+<p class="text-white/70 text-sm mb-4">Team-based hero shooter with unique characters and strategic gameplay.</p>
+<div class="flex justify-between items-center">
+<span class="text-primary font-medium">Free to Play</span>
+<a href="https://store.steampowered.com/app/2357570/Overwatch_2/" target="_blank" class="neon-button bg-[#1A1F29] hover:bg-[#252A35] text-white px-4 py-2 rounded-button text-sm whitespace-nowrap">
+PLAY NOW
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- TPS Section -->
+<div class="tps-section rounded-2xl p-6">
+<h3 class="orbitron text-2xl font-bold mb-6 flex items-center">
+<div class="w-8 h-8 flex items-center justify-center bg-gradient-to-r from-primary to-purple-500 rounded-full mr-3">
+<i class="ri-gamepad-line"></i>
+</div>
+Third-Person Shooters
+</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="game-card rounded-xl overflow-hidden">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=fortnite%20game%20screenshot%2C%20colorful%20battle%20royale%2C%20third-person%20shooter%2C%20building%20mechanics%2C%20high-quality%20game%20graphics%2C%20ultra-detailed%2C%20cinematic%2C%20high%20resolution&width=400&height=225&seq=fortnite&orientation=landscape" class="w-full h-48 object-top object-cover" alt="Fortnite">
+<div class="absolute top-3 right-3 bg-primary text-[#0D1117] text-xs font-bold px-2 py-1 rounded">POPULAR</div>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<h4 class="orbitron text-xl font-bold">FORTNITE</h4>
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center text-yellow-400 mr-1">
+<i class="ri-star-fill"></i>
+</div>
+<span class="text-white/90 text-sm">4.6</span>
+</div>
+</div>
+<p class="text-white/70 text-sm mb-4">The battle royale phenomenon with building mechanics and constant updates.</p>
+<div class="flex justify-between items-center">
+<span class="text-primary font-medium">Free to Play</span>
+<a href="https://store.epicgames.com/en-US/p/fortnite" target="_blank" class="neon-button bg-[#1A1F29] hover:bg-[#252A35] text-white px-4 py-2 rounded-button text-sm whitespace-nowrap">
+PLAY NOW
+</a>
+</div>
+</div>
+</div>
+<div class="game-card rounded-xl overflow-hidden">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=pubg%20game%20screenshot%2C%20realistic%20battle%20royale%2C%20third-person%20shooter%2C%20military%20style%2C%20high-quality%20game%20graphics%2C%20ultra-detailed%2C%20cinematic%2C%20high%20resolution&width=400&height=225&seq=pubg&orientation=landscape" class="w-full h-48 object-top object-cover" alt="PUBG">
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<h4 class="orbitron text-xl font-bold">PUBG: BATTLEGROUNDS</h4>
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center text-yellow-400 mr-1">
+<i class="ri-star-fill"></i>
+</div>
+<span class="text-white/90 text-sm">4.4</span>
+</div>
+</div>
+<p class="text-white/70 text-sm mb-4">The original battle royale experience with realistic gunplay and tactical gameplay.</p>
+<div class="flex justify-between items-center">
+<span class="text-primary font-medium">Free to Play</span>
+<a href="https://store.epicgames.com/en-US/p/fortnite" target="_blank" class="neon-button bg-[#1A1F29] hover:bg-[#252A35] text-white px-4 py-2 rounded-button text-sm whitespace-nowrap">
+PLAY NOW
+</a>
+</div>
+</div>
+</div>
+<div class="game-card rounded-xl overflow-hidden">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=apex%20legends%20game%20screenshot%2C%20futuristic%20battle%20royale%2C%20hero%20shooter%2C%20colorful%20characters%2C%20high-quality%20game%20graphics%2C%20ultra-detailed%2C%20cinematic%2C%20high%20resolution&width=400&height=225&seq=apex&orientation=landscape" class="w-full h-48 object-top object-cover" alt="Apex Legends">
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<h4 class="orbitron text-xl font-bold">APEX LEGENDS</h4>
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center text-yellow-400 mr-1">
+<i class="ri-star-fill"></i>
+</div>
+<span class="text-white/90 text-sm">4.7</span>
+</div>
+</div>
+<p class="text-white/70 text-sm mb-4">Hero-based battle royale with unique character abilities and fast-paced movement.</p>
+<div class="flex justify-between items-center">
+<span class="text-primary font-medium">Free to Play</span>
+<a href="https://store.epicgames.com/en-US/p/fortnite" target="_blank" class="neon-button bg-[#1A1F29] hover:bg-[#252A35] text-white px-4 py-2 rounded-button text-sm whitespace-nowrap">
+PLAY NOW
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- News Section -->
+<section id="news" class="py-20">
+<div class="container mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="orbitron text-4xl font-bold mb-4">LATEST <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">NEWS</span></h2>
+<p class="text-white/70 max-w-2xl mx-auto">Stay updated with the latest game updates, patch notes, and esports events.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="news-card rounded-xl overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=valorant%20new%20agent%20reveal%2C%20character%20design%2C%20futuristic%20abilities%2C%20game%20art%2C%20high-quality%20game%20graphics%2C%20ultra-detailed%2C%20cinematic%2C%20high%20resolution&width=400&height=225&seq=news1&orientation=landscape" class="w-full h-48 object-top object-cover" alt="Valorant News">
+<div class="p-4">
+<div class="flex items-center mb-3">
+<span class="bg-secondary/20 text-secondary text-xs font-medium px-2 py-1 rounded mr-2">VALORANT</span>
+<span class="text-white/50 text-xs">May 25, 2025</span>
+</div>
+<h4 class="text-xl font-bold mb-2">New Agent "Eclipse" Revealed for Valorant</h4>
+<p class="text-white/70 text-sm mb-4">Riot Games has unveiled the newest addition to Valorant's roster, an agent with shadow manipulation abilities.</p>
+<a href="#" class="text-primary font-medium flex items-center">
+Read More
+<div class="w-5 h-5 flex items-center justify-center ml-1">
+<i class="ri-arrow-right-line"></i>
+</div>
+</a>
+</div>
+</div>
+<div class="news-card rounded-xl overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=counter-strike%202%20new%20map%20reveal%2C%20tactical%20shooter%20level%20design%2C%20high-quality%20game%20graphics%2C%20ultra-detailed%2C%20cinematic%2C%20high%20resolution&width=400&height=225&seq=news2&orientation=landscape" class="w-full h-48 object-top object-cover" alt="CS2 News">
+<div class="p-4">
+<div class="flex items-center mb-3">
+<span class="bg-primary/20 text-primary text-xs font-medium px-2 py-1 rounded mr-2">COUNTER-STRIKE 2</span>
+<span class="text-white/50 text-xs">May 22, 2025</span>
+</div>
+<h4 class="text-xl font-bold mb-2">Counter-Strike 2 Introduces New Map "Nexus"</h4>
+<p class="text-white/70 text-sm mb-4">Valve has released a new competitive map for Counter-Strike 2 featuring a futuristic research facility setting.</p>
+<a href="#" class="text-primary font-medium flex items-center">
+Read More
+<div class="w-5 h-5 flex items-center justify-center ml-1">
+<i class="ri-arrow-right-line"></i>
+</div>
+</a>
+</div>
+</div>
+<div class="news-card rounded-xl overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=fortnite%20new%20season%20reveal%2C%20battle%20royale%20game%2C%20colorful%20environment%2C%20character%20skins%2C%20high-quality%20game%20graphics%2C%20ultra-detailed%2C%20cinematic%2C%20high%20resolution&width=400&height=225&seq=news3&orientation=landscape" class="w-full h-48 object-top object-cover" alt="Fortnite News">
+<div class="p-4">
+<div class="flex items-center mb-3">
+<span class="bg-purple-500/20 text-purple-500 text-xs font-medium px-2 py-1 rounded mr-2">FORTNITE</span>
+<span class="text-white/50 text-xs">May 20, 2025</span>
+</div>
+<h4 class="text-xl font-bold mb-2">Fortnite Chapter 5: Season 3 Details Leaked</h4>
+<p class="text-white/70 text-sm mb-4">Leaks suggest the next Fortnite season will feature a cyberpunk theme with futuristic vehicles and weapons.</p>
+<a href="#" class="text-primary font-medium flex items-center">
+Read More
+<div class="w-5 h-5 flex items-center justify-center ml-1">
+<i class="ri-arrow-right-line"></i>
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="mt-12 text-center">
+<button class="neon-button bg-transparent border-2 border-primary text-primary hover:bg-primary/10 font-bold py-3 px-8 rounded-button whitespace-nowrap">
+VIEW ALL NEWS
+</button>
+</div>
+</div>
+</section>
+<!-- Community Section -->
+<section id="community" class="py-20 bg-[#0A0E14]">
+<div class="container mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="orbitron text-4xl font-bold mb-4">JOIN OUR <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">COMMUNITY</span></h2>
+<p class="text-white/70 max-w-2xl mx-auto">Connect with millions of players, watch live streams, and share your gaming moments.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+<div class="bg-[#1A1F29] rounded-xl overflow-hidden">
+<div class="p-6">
+<h3 class="orbitron text-2xl font-bold mb-4 flex items-center">
+<div class="w-8 h-8 flex items-center justify-center bg-gradient-to-r from-purple-500 to-secondary rounded-full mr-3">
+<i class="ri-live-line"></i>
+</div>
+Live Streams
+</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="relative rounded-lg overflow-hidden group">
+<img src="https://readdy.ai/api/search-image?query=professional%20gamer%20streaming%20valorant%2C%20gaming%20setup%2C%20RGB%20lighting%2C%20high-quality%20stream%20setup%2C%20ultra-detailed%2C%20cinematic%2C%20high%20resolution&width=300&height=169&seq=stream1&orientation=landscape" class="w-full h-40 object-top object-cover" alt="Stream">
+<div class="absolute inset-0 bg-gradient-to-t from-[#0D1117] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+<div class="absolute top-2 left-2">
+<span class="bg-red-500 text-white text-xs px-2 py-1 rounded flex items-center">
+<span class="w-2 h-2 bg-white rounded-full animate-pulse mr-1"></span>
+LIVE
+</span>
+</div>
+<div class="absolute bottom-2 left-2 right-2">
+<div class="flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<div class="flex items-center">
+<img src="https://readdy.ai/api/search-image?query=professional%20male%20gamer%20portrait%2C%20gaming%20headset%2C%20confident%20expression%2C%20high%20quality%20portrait%2C%20studio%20lighting&width=50&height=50&seq=streamer1&orientation=squarish" class="w-6 h-6 rounded-full object-top object-cover mr-2" alt="Streamer">
+<span class="text-white text-sm font-medium">ShroudX</span>
+</div>
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center text-white mr-1">
+<i class="ri-user-line"></i>
+</div>
+<span class="text-white text-xs">24.5K</span>
+</div>
+</div>
+</div>
+</div>
+<div class="relative rounded-lg overflow-hidden group">
+<img src="https://readdy.ai/api/search-image?query=professional%20female%20gamer%20streaming%20fortnite%2C%20gaming%20setup%2C%20RGB%20lighting%2C%20high-quality%20stream%20setup%2C%20ultra-detailed%2C%20cinematic%2C%20high%20resolution&width=300&height=169&seq=stream2&orientation=landscape" class="w-full h-40 object-top object-cover" alt="Stream">
+<div class="absolute inset-0 bg-gradient-to-t from-[#0D1117] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+<div class="absolute top-2 left-2">
+<span class="bg-red-500 text-white text-xs px-2 py-1 rounded flex items-center">
+<span class="w-2 h-2 bg-white rounded-full animate-pulse mr-1"></span>
+LIVE
+</span>
+</div>
+<div class="absolute bottom-2 left-2 right-2">
+<div class="flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<div class="flex items-center">
+<img src="https://readdy.ai/api/search-image?query=professional%20female%20gamer%20portrait%2C%20gaming%20headset%2C%20smiling%20expression%2C%20high%20quality%20portrait%2C%20studio%20lighting&width=50&height=50&seq=streamer2&orientation=squarish" class="w-6 h-6 rounded-full object-top object-cover mr-2" alt="Streamer">
+<span class="text-white text-sm font-medium">ValkyriePro</span>
+</div>
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center text-white mr-1">
+<i class="ri-user-line"></i>
+</div>
+<span class="text-white text-xs">18.2K</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-4">
+<a href="#" class="text-primary font-medium flex items-center justify-center">
+View All Streams
+<div class="w-5 h-5 flex items-center justify-center ml-1">
+<i class="ri-arrow-right-line"></i>
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="bg-[#1A1F29] rounded-xl overflow-hidden">
+<div class="p-6">
+<h3 class="orbitron text-2xl font-bold mb-4 flex items-center">
+<div class="w-8 h-8 flex items-center justify-center bg-gradient-to-r from-primary to-blue-500 rounded-full mr-3">
+<i class="ri-discord-fill"></i>
+</div>
+Discord Community
+</h3>
+<div class="bg-[#0D1117] rounded-lg p-4 mb-4">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center">
+<div class="w-12 h-12 flex items-center justify-center bg-primary rounded-full mr-3">
+<i class="ri-gamepad-line text-[#0D1117] text-xl"></i>
+</div>
+<div>
+<h4 class="font-bold">Churmar Website</h4>
+<p class="text-white/50 text-sm">Official Discord Server</p>
+</div>
+</div>
+<div class="flex items-center">
+<div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+<span class="text-white/70 text-sm">Online</span>
+</div>
+</div>
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<i class="ri-user-3-line"></i>
+</div>
+<span class="text-white/70 text-sm">185,462 Members</span>
+</div>
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<i class="ri-chat-3-line"></i>
+</div>
+<span class="text-white/70 text-sm">42 Channels</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2 mb-4">
+<div class="bg-[#1A1F29] rounded p-2 text-sm">
+<span class="text-primary">#valorant</span>
+</div>
+<div class="bg-[#1A1F29] rounded p-2 text-sm">
+<span class="text-primary">#counter-strike</span>
+</div>
+<div class="bg-[#1A1F29] rounded p-2 text-sm">
+<span class="text-primary">#fortnite</span>
+</div>
+<div class="bg-[#1A1F29] rounded p-2 text-sm">
+<span class="text-primary">#tournaments</span>
+</div>
+</div>
+<button class="neon-button w-full bg-[#5865F2] hover:bg-[#4752C4] text-white font-bold py-2 px-4 rounded-button flex items-center justify-center whitespace-nowrap">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-discord-fill"></i>
+</div>
+JOIN DISCORD
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-[#1A1F29] rounded-xl overflow-hidden p-6">
+<h3 class="orbitron text-2xl font-bold mb-6 flex items-center">
+<div class="w-8 h-8 flex items-center justify-center bg-gradient-to-r from-yellow-500 to-secondary rounded-full mr-3">
+<i class="ri-team-line"></i>
+</div>
+Find Your Team
+</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<div class="bg-[#0D1117] rounded-lg p-4">
+<div class="flex items-center justify-between mb-4">
+<h4 class="font-bold">Team Phoenix</h4>
+<span class="bg-primary/20 text-primary text-xs font-medium px-2 py-1 rounded">VALORANT</span>
+</div>
+<p class="text-white/70 text-sm mb-4">Looking for a dedicated player to complete our competitive team. Diamond+ rank required.</p>
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<i class="ri-user-line"></i>
+</div>
+<span class="text-white/70 text-sm">4/5 Members</span>
+</div>
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<i class="ri-global-line"></i>
+</div>
+<span class="text-white/70 text-sm">NA Region</span>
+</div>
+</div>
+<button class="neon-button w-full bg-[#1A1F29] hover:bg-[#252A35] text-white px-4 py-2 rounded-button text-sm whitespace-nowrap">
+APPLY NOW
+</button>
+</div>
+<div class="bg-[#0D1117] rounded-lg p-4">
+<div class="flex items-center justify-between mb-4">
+<h4 class="font-bold">Tactical Ops</h4>
+<span class="bg-primary/20 text-primary text-xs font-medium px-2 py-1 rounded">CS2</span>
+</div>
+<p class="text-white/70 text-sm mb-4">Semi-professional team seeking an experienced AWPer. Tournament experience preferred.</p>
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<i class="ri-user-line"></i>
+</div>
+<span class="text-white/70 text-sm">4/5 Members</span>
+</div>
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<i class="ri-global-line"></i>
+</div>
+<span class="text-white/70 text-sm">EU Region</span>
+</div>
+</div>
+<button class="neon-button w-full bg-[#1A1F29] hover:bg-[#252A35] text-white px-4 py-2 rounded-button text-sm whitespace-nowrap">
+APPLY NOW
+</button>
+</div>
+<div class="bg-[#0D1117] rounded-lg p-4">
+<div class="flex items-center justify-between mb-4">
+<h4 class="font-bold">Storm Riders</h4>
+<span class="bg-purple-500/20 text-purple-500 text-xs font-medium px-2 py-1 rounded">FORTNITE</span>
+</div>
+<p class="text-white/70 text-sm mb-4">Casual team looking for players to compete in weekend tournaments. All skill levels welcome.</p>
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<i class="ri-user-line"></i>
+</div>
+<span class="text-white/70 text-sm">2/4 Members</span>
+</div>
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<i class="ri-global-line"></i>
+</div>
+<span class="text-white/70 text-sm">ASIA Region</span>
+</div>
+</div>
+<button class="neon-button w-full bg-[#1A1F29] hover:bg-[#252A35] text-white px-4 py-2 rounded-button text-sm whitespace-nowrap">
+APPLY NOW
+</button>
+</div>
+</div>
+<div class="mt-6 text-center">
+<button class="neon-button bg-transparent border-2 border-primary text-primary hover:bg-primary/10 font-bold py-2 px-6 rounded-button whitespace-nowrap">
+VIEW ALL TEAMS
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Section -->
+<section class="py-20">
+<div class="container mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="orbitron text-4xl font-bold mb-4">GLOBAL <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">STATISTICS</span></h2>
+<p class="text-white/70 max-w-2xl mx-auto">Explore the latest data from our gaming community and tournaments.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<div class="bg-[#1A1F29] rounded-xl overflow-hidden p-6">
+<h3 class="orbitron text-xl font-bold mb-4">Most Played Games (Monthly)</h3>
+<div id="mostPlayedChart" class="w-full h-80"></div>
+</div>
+<div class="bg-[#1A1F29] rounded-xl overflow-hidden p-6">
+<h3 class="orbitron text-xl font-bold mb-4">Tournament Prize Pools</h3>
+<div id="prizesChart" class="w-full h-80"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-[#0A0E14] pt-16 pb-8">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+<div>
+<a href="#" class="flex items-center mb-6">
+<span class="text-3xl font-['Pacifico'] text-primary mr-1">Churmar</span>
+<span class="text-3xl orbitron font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Website</span>
+</a>
+<p class="text-white/70 text-sm mb-6">Your ultimate destination for FPS and TPS gaming. Join millions of players worldwide in the most competitive shooter games.</p>
+<div class="flex space-x-4">
+<a href="#" class="social-icon w-10 h-10 flex items-center justify-center text-white/70 hover:text-primary transition-colors duration-300">
+<i class="ri-twitter-x-line text-xl"></i>
+</a>
+<a href="#" class="social-icon w-10 h-10 flex items-center justify-center text-white/70 hover:text-primary transition-colors duration-300">
+<i class="ri-facebook-fill text-xl"></i>
+</a>
+<a href="#" class="social-icon w-10 h-10 flex items-center justify-center text-white/70 hover:text-primary transition-colors duration-300">
+<i class="ri-instagram-line text-xl"></i>
+</a>
+<a href="#" class="social-icon w-10 h-10 flex items-center justify-center text-white/70 hover:text-primary transition-colors duration-300">
+<i class="ri-youtube-line text-xl"></i>
+</a>
+<a href="#" class="social-icon w-10 h-10 flex items-center justify-center text-white/70 hover:text-primary transition-colors duration-300">
+<i class="ri-discord-line text-xl"></i>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-6">Quick Links</h4>
+<ul class="space-y-3">
+<li><a href="#games" class="text-white/70 hover:text-primary transition-colors duration-300">Games</a></li>
+<li><a href="#news" class="text-white/70 hover:text-primary transition-colors duration-300">News</a></li>
+<li><a href="#community" class="text-white/70 hover:text-primary transition-colors duration-300">Community</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-6">Support</h4>
+<ul class="space-y-3">
+<li><a href="#" class="text-white/70 hover:text-primary transition-colors duration-300">Help Center</a></li>
+<li><a href="#" class="text-white/70 hover:text-primary transition-colors duration-300">FAQs</a></li>
+<li><a href="#" class="text-white/70 hover:text-primary transition-colors duration-300">Contact Us</a></li>
+<li><a href="#" class="text-white/70 hover:text-primary transition-colors duration-300">Report a Bug</a></li>
+<li><a href="#" class="text-white/70 hover:text-primary transition-colors duration-300">System Status</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-6">Legal</h4>
+<ul class="space-y-3">
+<li><a href="#" class="text-white/70 hover:text-primary transition-colors duration-300">Terms of Service</a></li>
+<li><a href="#" class="text-white/70 hover:text-primary transition-colors duration-300">Privacy Policy</a></li>
+<li><a href="#" class="text-white/70 hover:text-primary transition-colors duration-300">Cookie Policy</a></li>
+<li><a href="#" class="text-white/70 hover:text-primary transition-colors duration-300">EULA</a></li>
+<li><a href="#" class="text-white/70 hover:text-primary transition-colors duration-300">Anti-Cheat Policy</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-white/10 pt-8">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<p class="text-white/50 text-sm mb-4 md:mb-0">© 2025 Nexus Gaming. All rights reserved.</p>
+<div class="flex items-center space-x-4">
+<div class="w-8 h-8 flex items-center justify-center text-white/70">
+<i class="ri-visa-line text-xl"></i>
+</div>
+<div class="w-8 h-8 flex items-center justify-center text-white/70">
+<i class="ri-mastercard-line text-xl"></i>
+</div>
+<div class="w-8 h-8 flex items-center justify-center text-white/70">
+<i class="ri-paypal-line text-xl"></i>
+</div>
+<div class="w-8 h-8 flex items-center justify-center text-white/70">
+<i class="ri-apple-pay-line text-xl"></i>
+</div>
+<div class="w-8 h-8 flex items-center justify-center text-white/70">
+<i class="ri-google-pay-line text-xl"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script id="chartInitialization">
+document.addEventListener('DOMContentLoaded', function() {
+// Most Played Games Chart
+const mostPlayedChart = echarts.init(document.getElementById('mostPlayedChart'));
+const mostPlayedOption = {
+animation: false,
+tooltip: {
+trigger: 'axis',
+backgroundColor: 'rgba(255, 255, 255, 0.8)',
+textStyle: {
+color: '#1f2937'
+}
+},
+grid: {
+top: 10,
+right: 10,
+bottom: 30,
+left: 60
+},
+xAxis: {
+type: 'category',
+data: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+axisLine: {
+lineStyle: {
+color: 'rgba(255, 255, 255, 0.2)'
+}
+},
+axisLabel: {
+color: 'rgba(255, 255, 255, 0.7)'
+}
+},
+yAxis: {
+type: 'value',
+name: 'Players (millions)',
+nameTextStyle: {
+color: 'rgba(255, 255, 255, 0.7)'
+},
+axisLine: {
+lineStyle: {
+color: 'rgba(255, 255, 255, 0.2)'
+}
+},
+axisLabel: {
+color: 'rgba(255, 255, 255, 0.7)'
+},
+splitLine: {
+lineStyle: {
+color: 'rgba(255, 255, 255, 0.1)'
+}
+}
+},
+series: [
+{
+name: 'Valorant',
+type: 'line',
+data: [2.1, 2.3, 2.5, 2.8, 3.2],
+smooth: true,
+symbol: 'none',
+lineStyle: {
+width: 3,
+color: 'rgba(87, 181, 231, 1)'
+},
+areaStyle: {
+color: {
+type: 'linear',
+x: 0,
+y: 0,
+x2: 0,
+y2: 1,
+colorStops: [{
+offset: 0,
+color: 'rgba(87, 181, 231, 0.2)'
+}, {
+offset: 1,
+color: 'rgba(87, 181, 231, 0.05)'
+}]
+}
+}
+},
+{
+name: 'Counter-Strike 2',
+type: 'line',
+data: [1.8, 2.0, 2.2, 2.4, 2.6],
+smooth: true,
+symbol: 'none',
+lineStyle: {
+width: 3,
+color: 'rgba(141, 211, 199, 1)'
+},
+areaStyle: {
+color: {
+type: 'linear',
+x: 0,
+y: 0,
+x2: 0,
+y2: 1,
+colorStops: [{
+offset: 0,
+color: 'rgba(141, 211, 199, 0.2)'
+}, {
+offset: 1,
+color: 'rgba(141, 211, 199, 0.05)'
+}]
+}
+}
+},
+{
+name: 'Fortnite',
+type: 'line',
+data: [2.5, 2.6, 2.7, 2.9, 3.1],
+smooth: true,
+symbol: 'none',
+lineStyle: {
+width: 3,
+color: 'rgba(251, 191, 114, 1)'
+},
+areaStyle: {
+color: {
+type: 'linear',
+x: 0,
+y: 0,
+x2: 0,
+y2: 1,
+colorStops: [{
+offset: 0,
+color: 'rgba(251, 191, 114, 0.2)'
+}, {
+offset: 1,
+color: 'rgba(251, 191, 114, 0.05)'
+}]
+}
+}
+}
+]
+};
+mostPlayedChart.setOption(mostPlayedOption);
+// Prize Pools Chart
+const prizesChart = echarts.init(document.getElementById('prizesChart'));
+const prizesOption = {
+animation: false,
+tooltip: {
+trigger: 'item',
+backgroundColor: 'rgba(255, 255, 255, 0.8)',
+textStyle: {
+color: '#1f2937'
+}
+},
+legend: {
+top: '5%',
+left: 'center',
+textStyle: {
+color: 'rgba(255, 255, 255, 0.7)'
+}
+},
+series: [
+{
+name: 'Prize Pool',
+type: 'pie',
+radius: ['40%', '70%'],
+avoidLabelOverlap: false,
+itemStyle: {
+borderRadius: 10,
+borderColor: '#1A1F29',
+borderWidth: 2
+},
+label: {
+show: false,
+position: 'center'
+},
+emphasis: {
+label: {
+show: true,
+fontSize: 16,
+fontWeight: 'bold',
+color: 'rgba(255, 255, 255, 0.9)'
+}
+},
+labelLine: {
+show: false
+},
+data: [
+{ value: 1000000, name: 'Valorant', itemStyle: { color: 'rgba(87, 181, 231, 1)' } },
+{ value: 1500000, name: 'Counter-Strike 2', itemStyle: { color: 'rgba(141, 211, 199, 1)' } },
+{ value: 2000000, name: 'Fortnite', itemStyle: { color: 'rgba(251, 191, 114, 1)' } },
+{ value: 800000, name: 'Apex Legends', itemStyle: { color: 'rgba(252, 141, 98, 1)' } }
+]
+}
+]
+};
+prizesChart.setOption(prizesOption);
+// Resize charts when window size changes
+window.addEventListener('resize', function() {
+mostPlayedChart.resize();
+prizesChart.resize();
+});
+});
+</script>
+<script id="tabSwitcher">
+document.addEventListener('DOMContentLoaded', function() {
+const tabButtons = document.querySelectorAll('.tab-button');
+tabButtons.forEach(button => {
+button.addEventListener('click', function() {
+// Remove active class from all buttons
+tabButtons.forEach(btn => {
+btn.classList.remove('active');
+});
+// Add active class to clicked button
+this.classList.add('active');
+});
+});
+});
+</script>
+<script id="scrollAnimation">
+document.addEventListener('DOMContentLoaded', function() {
+const navLinks = document.querySelectorAll('a[href^="#"]');
+navLinks.forEach(link => {
+link.addEventListener('click', function(e) {
+e.preventDefault();
+const targetId = this.getAttribute('href');
+if (targetId === '#') return;
+const targetElement = document.querySelector(targetId);
+if (targetElement) {
+window.scrollTo({
+top: targetElement.offsetTop - 80,
+behavior: 'smooth'
+});
+}
+});
+});
+});
+</script>
+</body>
+</html>
